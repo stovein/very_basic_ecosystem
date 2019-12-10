@@ -82,7 +82,7 @@ function createVehicle(number) {
 }
 
 function drawVehicle() {
-    for (let i = 0; i < vehicles.length; i++) {
+    for (let i = vehicles.length - 1; i >= 0; i--) {
         let v = vehicles[i];
         if (v.reproductiveUrge > 0.5 && v.health > 30)
             v.reproduction(vehicles, mutationRate);

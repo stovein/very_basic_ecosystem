@@ -9,10 +9,10 @@ class Vehicle {
 
         // genes of the object
         this.dna = [];
-        this.dna[0] = random(0, 1); // food force
-        this.dna[1] = random(0, 1); // poison force
+        this.dna[0] = random(-1, 1); // food force
+        this.dna[1] = random(-1, 1); // poison force
         this.dna[2] = random(0, 1); // wellbeing
-        this.dna[3] = random(0.2, 1); // size
+        this.dna[3] = random(0.2, 1); // size ;rn unused
     }
 
     applyStats() {
@@ -141,8 +141,17 @@ class Vehicle {
                 let mutation =
                     random(-1, 1) < 0 ? random(-0.3, -0.1) : random(0.1, 0.3);
                 this.dna[i] += mutation;
-                this.dna[i] =
-                    this.dna[i] < 0 ? 0 : this.dna[i] > 1 ? 1 : this.dna[i];
+                if (i > 1)
+                    this.dna[i] =
+                        this.dna[i] < 0 ? 0 : this.dna[i] > 1 ? 1 : this.dna[i];
+                else if (i === 0 || i === 1)
+                    //
+                    this.dna[i] =
+                        this.dna[i] < -1
+                            ? -1
+                            : this.dna[i] > 1
+                            ? 1
+                            : this.dna[i];
             }
         }
     }
